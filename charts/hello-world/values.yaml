@@ -8,7 +8,7 @@ image:
   repository: ghcr.io/appvia/hello-world/hello-world
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "main"
+  tag: "0.1.0@sha256:48c2597d871a17a16d81ccdca281ca687b5b4b88e04a232467d04b133bfd3b3e"
 
 imagePullSecrets: []
 nameOverride: ""
