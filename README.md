@@ -2,10 +2,15 @@
 
 A simple hello-world web application running with a non-root user on Alpine Linux in a Docker container.
 
+## Prerequisites
+
+Docker
+Helm
+
 ## Build
 
 ```
-docker build -t hello-world .
+docker build --platform=linux/amd64 -t hello-world .
 ```
 
 ## Run
@@ -21,6 +26,9 @@ Visit http://localhost:8080 in a web browser.
 ### Helm Install
 
 ```
+INGRESS_HOSTNAME=
+KUBE_NAMESPACE=hello-world
+
 helm -n ${KUBE_NAMESPACE} install hello-world ./charts/hello-world --set ingress.hostname=${INGRESS_HOSTNAME}
 ```
 
