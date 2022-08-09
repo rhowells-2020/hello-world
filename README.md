@@ -21,6 +21,28 @@ docker run -it -p 8080:8080 --rm --name hello-world ghcr.io/appvia/hello-world/h
 
 Visit http://localhost:8080 in a web browser.
 
+## Push to GHCR
+
+### Create a new GitHub Personal Access Token
+
+Follow instructions as seen on:
+
+https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
+
+
+### Push image to GHCR
+
+```
+REGISTRY=ghcr.io/appvia
+GH_REPO=hello-world
+IMAGE_NAME=hello-world
+TAG=main
+IMAGE_URL=${REGISTRY}/${GH_REPO}/${IMAGE_NAME}:${TAG}
+
+docker build --platform=linux/amd64 -t ${IMAGE_URL} .
+docker push ${IMAGE_URL}
+```
+
 ## Deploy to Kubernetes
 
 ### Helm Install
