@@ -64,7 +64,7 @@ metadata:
   name: hello-world
 spec:
   interval: 1h
-  url: https://github.com/appvia/hello-world
+  url: https://github.com/rhowells-2020/hello-world
   ref:
     branch: main
 EOF
