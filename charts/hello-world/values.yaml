@@ -5,7 +5,7 @@
 replicaCount: 2
 
 image:
-  repository: ghcr.io/appvia/hello-world/hello-world
+  repository: ghcr.io/rhowells-2020/hello-world/hello-world
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "0.1.0@sha256:48c2597d871a17a16d81ccdca281ca687b5b4b88e04a232467d04b133bfd3b3e"
@@ -45,7 +45,7 @@ ingress:
   className: external
   annotations:
     cert-manager.io/cluster-issuer: prod-le-dns01
-  hostname: hello-world.example.appvia.io
+  hostname: dev.hello.imperialapp.io
   tls:
     secretName: tls-hello-world
 

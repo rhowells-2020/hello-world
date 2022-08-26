@@ -16,7 +16,7 @@ docker build --platform=linux/amd64 -t hello-world .
 ## Run
 
 ```
-docker run -it -p 8080:8080 --rm --name hello-world ghcr.io/appvia/hello-world/hello-world:main
+docker run -it -p 8080:8080 --rm --name hello-world ghcr.io/rhowellsr-2020/hello-world/hello-world:main
 ```
 
 Visit http://localhost:8080 in a web browser.
@@ -33,7 +33,7 @@ https://docs.github.com/en/packages/working-with-a-github-packages-registry/work
 ### Push image to GHCR
 
 ```
-REGISTRY=ghcr.io/appvia
+REGISTRY=ghcr.io/rhowells-2020
 GH_REPO=hello-world
 IMAGE_NAME=hello-world
 TAG=main

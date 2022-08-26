@@ -23,7 +23,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v3
         with:
-          images: docker.pkg.github.com/appvia/hello-world/hello-world
+          images: docker.pkg.github.com/rhowells-2020/hello-world/hello-world
 
       - name: Build and export to Docker
         uses: docker/build-push-action@v2

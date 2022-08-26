@@ -1,6 +1,6 @@
 FROM alpine:latest
-LABEL maintainer "info@appvia.io"
-LABEL source "https://github.com/appvia/hello-world"
+LABEL maintainer "r.howells@imperial.ac.uk"
+LABEL source "https://github.com/rhowells-2020/hello-world"
 
 # Set working directory
 WORKDIR /app
