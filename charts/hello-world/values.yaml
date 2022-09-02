@@ -8,9 +8,10 @@ image:
   repository: ghcr.io/rhowells-2020/hello-world/hello-world
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "0.1.0@sha256:47c647b0b3cd019d03cfaa76f5ac3eaf96a25c7b02a5836389d5d46acf2815ad"
+  tag: "main0@sha256:3636fbae28d6a5c452e403a75f8f5aee80d2b3fb78a6c2a899ee279ddb9c0e65"
 
-imagePullSecrets: []
+imagePullSecrets:
+  - name: dockerconfigjson-github-com
 nameOverride: ""
 fullnameOverride: ""
 
