@@ -16,7 +16,7 @@ docker build --platform=linux/amd64 -t hello-world .
 ## Run
 
 ```
-docker run -it -p 8080:8080 --rm --name hello-world ghcr.io/rhowellsr-2020/hello-world/hello-world:main
+docker run -it -p 8080:8080 --rm --name hello-world ghcr.io/rhowells-2020/hello-world/hello-world:main
 ```
 
 Visit http://localhost:8080 in a web browser.
