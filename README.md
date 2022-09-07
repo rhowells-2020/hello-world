@@ -2,12 +2,17 @@
 
 A simple hello-world web application running with a non-root user on Alpine Linux in a Docker container.
 
-**If you simply want to deploy this to a kubernetes cluster, simply gain access to a cluster and skip down to the ['Using a Kubernetes Deployment'](https://github.com/appvia/hello-world#using-a-kubernetes-deployment) section below.**
+**If you want to test this image directly on a Kubernetes Cluster, skip down to the ['Using a Kubernetes Deployment'](#using-a-kubernetes-deployment) section below.**
+
+## Prerequisites
+
+Docker
+Helm
 
 ## Build
 
 ```
-docker build -t hello-world .
+docker build --platform=linux/amd64 -t hello-world .
 ```
 
 ## Run
@@ -18,11 +23,33 @@ docker run -it -p 8080:8080 --rm --name hello-world ghcr.io/appvia/hello-world/h
 
 Visit http://localhost:8080 in a web browser.
 
+## Push to GHCR
+
+### Create a new GitHub Personal Access Token
+
+Follow instructions as seen on:
+
+https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
+
+
+### Push image to GHCR
+
+```
+REGISTRY=ghcr.io/appvia
+GH_REPO=hello-world
+IMAGE_NAME=hello-world
+TAG=main
+IMAGE_URL=${REGISTRY}/${GH_REPO}/${IMAGE_NAME}:${TAG}
+
+docker build --platform=linux/amd64 -t ${IMAGE_URL} .
+docker push ${IMAGE_URL}
+```
+
 ## Deploy to Kubernetes
 
 ### Using a Kubernetes Deployment
 - Copy the following yaml to a file called deployment.yaml
-```
+```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -45,9 +72,11 @@ spec:
         ports:
         - containerPort: 8080
 ```
+
 - Run `kubectl apply -f ./deployment.yaml` to apply the deployment to your kubernetes cluster.
 - To expose the service you need to get the name of the pod created. Simply run `kubectl get pod`
 - You should see a list similar to the following (I'm using the namespace called 'dev' to house my deployment. Change the -n dev as necessary):
+
 ```
 ╰─ kubectl get pod -n dev
 NAME                           READY   STATUS    RESTARTS   AGE
@@ -61,11 +90,18 @@ You should now be able to navigate to [http://localhost:8080](http://localhost:8
 
 ### Helm Install
 
+The below example will deploy the Hello World application and expose it via Ingress, using the `ingress-nginx` controller (included by default in Wayfinder Clusters if enabled).
+
 ```
+INGRESS_HOSTNAME=
+KUBE_NAMESPACE=hello-world
+
 helm -n ${KUBE_NAMESPACE} install hello-world ./charts/hello-world --set ingress.hostname=${INGRESS_HOSTNAME}
 ```
 
 ### Helm Flux Operator
+
+The below example will deploy the Hello World application and expose it via Ingress, using the `ingress-nginx` controller (included by default in Wayfinder Clusters if enabled).
 
 ```
 cat <<EOF | kubectl -n ${KUBE_NAMESPACE} apply -f -
