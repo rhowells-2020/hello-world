@@ -30,7 +30,9 @@ Command line:
 az login
 
 wf use workspace to1
+
 wf -w to1 get clusters
+
 wf access cluster aks1
 
 kubectl get namespaces
